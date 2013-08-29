@@ -29,6 +29,7 @@ class WP_MinsToRead {
 		//add_action( 'save_post', array( $this, 'calc_on_save' ) );
 		add_action( 'manage_posts_custom_column' , array( $this, 'display_mtr_column' ), 10, 2 );
 		add_filter( 'manage_posts_columns' , array( $this, 'add_mtr_column' ) );
+		add_filter( 'the_content', array( $this, 'add_mtr_before_content') );
 	}
 
 	public static function get_instance() {
@@ -100,14 +101,21 @@ class WP_MinsToRead {
 		WP_MinsToRead::calc_minread($post_id);
 	}
 
-	/* Display custom column */
+	function add_mtr_before_content( $content ) {
+	    $custom_content = '<h3>' . WP_MinsToRead::calc_mtr($read_ID) . '</h3>';
+	    $custom_content .= $content;
+	    return $custom_content;
+	}
+
+	/**
+	* Add Admin Colums
+	*/
 	function display_mtr_column( $column, $post_id ) {
 		if($column == 'mtr'){
 			echo WP_MinsToRead::calc_mtr($post_id);
 		}
 	}
 
-	/* Add custom column to post list */
 	function add_mtr_column( $columns ) {
 	    return array_merge( $columns, 
 	        array( 'mtr' => __( 'Mins To Read', 'WP_MinsToRead' ) ) );
