@@ -1,4 +1,4 @@
 wp-mins-to-read WIP
 ===============
 
-A quick plugin to gerate "min read" varible for WordPress posts.
+A quick plugin to generate the minutes to read for WordPress posts.
