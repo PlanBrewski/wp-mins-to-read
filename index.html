@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Wp-mins-to-read by twittem</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Wp-mins-to-read</h1>
+        <p>A simple plugin to generate the minutes to read for WordPress posts. Increase blog readership by qualifying the time commitment needed to read your post.</p>
+
+        <p class="view"><a href="https://github.com/twittem/wp-mins-to-read">View the Project on GitHub <small>twittem/wp-mins-to-read</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/twittem/wp-mins-to-read/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/twittem/wp-mins-to-read/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/twittem/wp-mins-to-read">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="wp-mins-to-read" class="anchor" href="#wp-mins-to-read"><span class="octicon octicon-link"></span></a>wp-mins-to-read</h1>
+
+<p><strong>A simple plugin to generate the minutes to read for WordPress posts. Increase blog readership by qualifying the time commitment needed to read your post.</strong></p>
+
+<h2>
+<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h2>
+
+<ul>
+<li>Calculates the time it will take to read a post</li>
+<li>Adds <code>Min Read</code> column to WordPress post admin</li>
+<li>Provides a function for outputting <code>Min Read</code> on posts and archives</li>
+<li>Uses WordPress transients to store calculated values and increase performance. </li>
+</ul><h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<ol>
+<li>Copy the <code>wp-mins-to-read</code> directory into your <code>wp-content/plugins</code> directory</li>
+<li>Navigate to the <em>Plugins</em> dashboard page</li>
+<li>Locate the menu item that reads <code>WP Mins To Read</code>
+</li>
+<li>Click on <em>Activate</em>
+</li>
+</ol><h2>
+<a name="theme-integration" class="anchor" href="#theme-integration"><span class="octicon octicon-link"></span></a>Theme Integration</h2>
+
+<p>In order to output the time to read on the front end you will need to add the function call to your theme. You can do this by calling the <code>get_mtr();</code> function. 
+Typically you want to add the time to read above the post title. To do this you will need to edit two files.</p>
+
+<h3>
+<a name="add-to-singal-post--archive-pages" class="anchor" href="#add-to-singal-post--archive-pages"><span class="octicon octicon-link"></span></a>Add to singal post &amp; archive pages</h3>
+
+<ul>
+<li>Open <code>wp-content/themes/YOUR THEME/contents.php</code>
+</li>
+<li>Find <code>&lt;h1 class="entry-title"&gt;</code>
+</li>
+<li>Add the following line above or below the title line.</li>
+</ul><div class="highlight"><pre><span class="o">&lt;</span><span class="nx">strong</span><span class="o">&gt;&lt;?</span><span class="nx">php</span> <span class="nx">WP_MinsToRead</span><span class="o">::</span><span class="na">get_mtr</span><span class="p">(</span><span class="nx">get_the_ID</span><span class="p">());</span> <span class="cp">?&gt;</span><span class="x">&lt;/strong&gt;</span>
+</pre></div>
+
+<ul>
+<li>Repeat steps to add the code to <code>wp-content/themes/YOUR THEME/content-single.php</code>
+</li>
+</ul><h2>
+<a name="credits" class="anchor" href="#credits"><span class="octicon octicon-link"></span></a>Credits</h2>
+
+<ul>
+<li>
+<a href="https://github.com/twittem/">Edward McIntyre</a> plugin Author</li>
+<li>
+<a href="http://tommcfarlin.com/">Tom McFarlin</a> plugin structure is based on Tom's <a href="https://github.com/tommcfarlin/WordPress-Plugin-Boilerplate">WordPress-Plugin-Boilerplate 2.0</a>
+</li>
+</ul><h2>
+<a name="roadmap-items" class="anchor" href="#roadmap-items"><span class="octicon octicon-link"></span></a>Roadmap Items</h2>
+
+<ul>
+<li>Find a good way to add the Min Read text to the posts automatically. There is no current filter that allows you to add text directly before or after the post title that is not included in the posts <code>&lt;h1&gt;</code> tag. This can by done using jQuery but on archive pages it could cause quite a performance lag.</li>
+<li>Add localization support</li>
+<li>Add Activation function to generate transients for current posts</li>
+<li>Add Deactivation function to delete transients from the database</li>
+</ul><h2>
+<a name="changlog" class="anchor" href="#changlog"><span class="octicon octicon-link"></span></a>Changlog</h2>
+
+<p><strong>1.0</strong></p>
+
+<ul>
+<li>Initial Release</li>
+</ul><p><a href="https://bitdeli.com/free" title="Bitdeli Badge"><img src="https://d2weczhvl823v0.cloudfront.net/twittem/wp-mins-to-read/trend.png" alt="Bitdeli Badge"></a></p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/twittem">twittem</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-39327681-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
