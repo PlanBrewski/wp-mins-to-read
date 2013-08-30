@@ -25,7 +25,7 @@ class WP_MinsToRead {
 	 *
 	 * @const   string
 	 */
-	const VERSION = '1.0.0';
+	const VERSION = '1.0.1';
 
 	/**
 	 * Unique identifier for your plugin.
@@ -168,7 +168,7 @@ class WP_MinsToRead {
 			}
 		}
 		
-		echo $mtr;
+		return $mtr;
 	}
 
 	/**

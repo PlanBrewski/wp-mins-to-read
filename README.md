@@ -25,7 +25,9 @@ Typically you want to add the time to read above the post title. To do this you 
 * Add the following line above or below the title line.
 
 ```php
-<strong><?php WP_MinsToRead::get_mtr(get_the_ID()); ?></strong>
+if( class_exists( 'WP_MinsToRead' ) ) {
+	echo '<strong>' . WP_MinsToRead::get_mtr( get_the_ID() ) . '</strong>';
+}
 ```
 * Repeat steps to add the code to ` wp-content/themes/YOUR THEME/content-single.php`
 
@@ -40,6 +42,11 @@ Typically you want to add the time to read above the post title. To do this you 
 * Add Deactivation function to delete transients from the database
 
 ## Changlog
+
+**1.0.1**
+* Updated theme integration info to avoid breaking the theme when the plugin is disabled.
+* get_mrt() now returns a string instead of echoing the result
+
 **1.0**
 * Initial Release
 
