@@ -153,7 +153,7 @@ class WP_MinsToRead {
 	 *
 	 * @return    string    Returns 'min read' string
 	 */
-	public function get_mtr($post_id) {
+	public static function get_mtr($post_id) {
 
 		$transient = get_transient($post_id . '-minread');
 
