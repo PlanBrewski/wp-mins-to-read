@@ -14,6 +14,6 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-require_once( plugin_dir_path( __FILE__ ) . 'class-read-read.php' );
+require_once( plugin_dir_path( __FILE__ ) . 'class-wp-mins-to-read.php' );
 
 Read_Read::get_instance();
