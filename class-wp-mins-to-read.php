@@ -117,7 +117,7 @@ class WP_MinsToRead {
 	 *
 	 * @return    string    Returns 'min read' string
 	 */
-	public function calc_mtr($post_id) {
+	public static function calc_mtr($post_id) {
 
 		//Get post content
 		$content = get_post_field( 'post_content', $post_id, 'display' );
