@@ -1,4 +1,4 @@
-# wp-mins-to-read
+# WordPress Minutes Read
 
 **A simple plugin to generate the minutes to read for WordPress posts. Increase blog readership by qualifying the time commitment needed to read your post.**
 
