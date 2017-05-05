@@ -132,7 +132,7 @@ class WP_MinsToRead {
 		$mtr_round = round($mtr_raw);
 
 		//if less them 1 min, make 1 min
-		$mtr = $mtr_round == 0 ? '1 min read' : $mtr_round . ' min read';
+		$mtr = $mtr_round == 0 ? __('1 min read', 'wp-minutes-read') : $mtr_round . __(' min read', 'wp-minutes-read');
 
 		//Set transient with out values
 		set_transient( $post_id . '-minread',
