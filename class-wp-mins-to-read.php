@@ -63,7 +63,6 @@ class WP_MinsToRead {
 	 * @since     1.0.0
 	 */
 	private function __construct() {
-		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
 		add_action( 'manage_posts_custom_column' , array( $this, 'display_mtr_column' ), 10, 2 );
 		add_filter( 'manage_posts_columns' , array( $this, 'add_mtr_column' ) );
 	}
@@ -96,19 +95,6 @@ class WP_MinsToRead {
 	*/
 
 	/**
-	 * Load the plugin text domain for translation.
-	 *
-	 * @since    1.0.0
-	 */
-	public function load_plugin_textdomain() {
-		$domain = $this->plugin_slug;
-		$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
-
-		load_textdomain( $domain, trailingslashit( WP_LANG_DIR ) . $domain . '/' . $domain . '-' . $locale . '.mo' );
-		load_plugin_textdomain( $domain, FALSE, basename( dirname( __FILE__ ) ) . '/lang/' );
-	}
-	
-	/**
 	 * Calculate the mins to read for a givin post
 	 *
 	 * @since     1.0.0
@@ -132,10 +118,10 @@ class WP_MinsToRead {
 		$mtr_round = round($mtr_raw);
 
 		//if less them 1 min, make 1 min
-		$mtr = $mtr_round == 0 ? __('1 min read', 'wp-minutes-read') : $mtr_round . __(' min read', 'wp-minutes-read');
+		$mtr = $mtr_round;
 
 		//Set transient with out values
-		set_transient( $post_id . '-minread',
+		set_transient( $post_id . '-mintoread',
 			array(
 				'value' => $mtr,
     			'time' => time(),
@@ -155,7 +141,7 @@ class WP_MinsToRead {
 	 */
 	public static function get_mtr($post_id) {
 
-		$transient = get_transient($post_id . '-minread');
+		$transient = get_transient($post_id . '-mintoread');
 
 		// If does not transient exists calcualte it
 		if ( false === $transient ) {
@@ -167,6 +153,8 @@ class WP_MinsToRead {
 				$mtr = $transient['value'];
 			}
 		}
+
+		$mtr = $mtr == 0 ? __('1 min read', 'wp-mins-to-read') : $mtr . ' ' . __('min read', 'wp-mins-to-read');
 		
 		return $mtr;
 	}
@@ -178,7 +166,7 @@ class WP_MinsToRead {
 	 */
 	function add_mtr_column( $columns ) {
 	    return array_merge( $columns, 
-	        array( 'mtr' => __( 'Min Read', 'WP_MinsToRead' ) ) );
+	        array( 'mtr' => __( 'min Read', 'wp-mins-to-read' ) ) );
 	}	
 
 	/**
